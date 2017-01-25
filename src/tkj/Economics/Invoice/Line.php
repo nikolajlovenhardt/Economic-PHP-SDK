@@ -54,11 +54,11 @@ class Line
     public function getArrayFromHandles($handles)
     {
         return $this->client
-            ->CurrentInvoiceLine_GetDataArray([
+            ->InvoiceLine_GetDataArray([
                 'entityHandles' => $handles,
             ])
-            ->CurrentInvoiceLine_GetDataArrayResult
-            ->CurrentInvoiceLineData;
+            ->InvoiceLine_GetDataArrayResult
+            ->InvoiceLineData;
     }
 
     /**
@@ -144,7 +144,7 @@ class Line
         }
 
         return $this->getArrayFromHandles([
-            'CurrentInvoiceLineHandle' => $line
+            'InvoiceLineHandle' => $line
         ]);
     }
 
@@ -157,10 +157,10 @@ class Line
     public function create($invoiceHandle)
     {
         return $this->client
-            ->CurrentInvoiceLine_Create([
+            ->InvoiceLine_Create([
                 'invoiceHandle' => $invoiceHandle,
             ])
-            ->CurrentInvoiceLine_CreateResult;
+            ->InvoiceLine_CreateResult;
     }
 
     /**
@@ -176,7 +176,7 @@ class Line
         $productHandle = $products->getHandle($product);
 
         $this->client
-            ->CurrentInvoiceLine_SetProduct([
+            ->InvoiceLine_SetProduct([
                 'currentInvoiceLineHandle' => $invoiceLineHandle,
                 'valueHandle' => $productHandle
             ]);
@@ -194,7 +194,7 @@ class Line
     public function discount($invoiceLineHandle, $discount)
     {
         $this->client
-            ->CurrentInvoiceLine_SetDiscountAsPercent([
+            ->InvoiceLine_SetDiscountAsPercent([
                 'currentInvoiceLineHandle' => $invoiceLineHandle,
                 'value'                    => $discount
             ]);
@@ -212,7 +212,7 @@ class Line
     public function description($invoiceLineHandle, $description)
     {
         $this->client
-            ->CurrentInvoiceLine_SetDescription([
+            ->InvoiceLine_SetDescription([
                 'currentInvoiceLineHandle' => $invoiceLineHandle,
                 'value'                    => $description
             ]);
@@ -230,7 +230,7 @@ class Line
     public function price($invoiceLineHandle, $price)
     {
         $this->client
-            ->CurrentInvoiceLine_SetUnitNetPrice([
+            ->InvoiceLine_SetUnitNetPrice([
                 'currentInvoiceLineHandle' => $invoiceLineHandle,
                 'value'                    => $price
             ]);
@@ -248,7 +248,7 @@ class Line
     public function qty($invoiceLineHandle, $qty)
     {
         $this->client
-            ->CurrentInvoiceLine_SetQuantity([
+            ->InvoiceLine_SetQuantity([
                 'currentInvoiceLineHandle' => $invoiceLineHandle,
                 'value'                    => $qty
             ]);
@@ -269,7 +269,7 @@ class Line
         $unitHandle = $units->getHandle($unit);
 
         $this->client
-            ->CurrentInvoiceLine_SetUnit([
+            ->InvoiceLine_SetUnit([
                 'currentInvoiceLineHandle' => $invoiceLineHandle,
                 'valueHandle'              => $unitHandle
             ]);
