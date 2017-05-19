@@ -54,7 +54,7 @@ class TokenClient implements ClientInterface
      *
      * @return SoapClient
      */
-    protected function setupClient()
+    public function setupClient()
     {
         $client = new SoapClient($this->apiUrl, $this->debug);
         $client->ConnectWithToken([
